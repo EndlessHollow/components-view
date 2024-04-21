@@ -24,7 +24,8 @@
                         "@hooks/*": ["./src/hooks/*"],
                         "@routes/*": ["./src/routes/*"],
                         "@stores/*": ["./src/stores/*"],
-                        "@ui/*": ["./src/ui/*"]
+                        "@ui/*": ["./src/ui/*"],
+                        "@assets/*": ["./src/assets/*"]
                 }
         },
         "include": ["src"],

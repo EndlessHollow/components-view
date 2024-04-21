@@ -13,6 +13,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "lucide-react": "^0.372.0",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
     "react": "^18.2.0",
