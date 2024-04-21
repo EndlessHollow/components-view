@@ -10,6 +10,7 @@ export default defineConfig({
             "@hooks": path.resolve(__dirname, "./src/hooks"),
             "@routes": path.resolve(__dirname, "./src/routes"),
             "@stores": path.resolve(__dirname, "./src/stores"),
+            "@ui": path.resolve(__dirname, "./src/ui"),
         },
     },
     plugins: [react()],

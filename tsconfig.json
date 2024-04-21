@@ -23,7 +23,8 @@
                         "@helpers/*": ["./src/helpers/*"],
                         "@hooks/*": ["./src/hooks/*"],
                         "@routes/*": ["./src/routes/*"],
-                        "@stores/*": ["./src/stores/*"]
+                        "@stores/*": ["./src/stores/*"],
+                        "@ui/*": ["./src/ui/*"]
                 }
         },
         "include": ["src"],
