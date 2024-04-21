@@ -1,29 +1,41 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
-import { CommonTypes } from "../types";
 import { cn } from "@helpers/cn";
-import { commonProperties } from "../common-properties";
+import { CommonTypes } from "@ui/types";
+import { commonProperties } from "@ui/common-properties";
 
 type Props = HTMLAttributes<HTMLDivElement> &
   CommonTypes &
-  VariantProps<typeof flexProperties>;
+  VariantProps<typeof flexVariants>;
 
 export function Flex(props: Props) {
-  const { children, className, display, direction, justify, align, wrap, gap } =
-    props;
+  const {
+    children,
+    className,
+    height,
+    width,
+    display,
+    direction,
+    justify,
+    align,
+    wrap,
+    gap,
+  } = props;
 
   return (
     <div
       className={cn(
-        flexProperties({
+        flexVariants({
           display,
           direction,
           justify,
           align,
           wrap,
           gap,
-          className,
         }),
+        width,
+        height,
+        className,
       )}
     >
       {children}
@@ -31,7 +43,7 @@ export function Flex(props: Props) {
   );
 }
 
-const flexProperties = cva(null, {
+const flexVariants = cva(null, {
   variants: {
     display: {
       flex: "flex",

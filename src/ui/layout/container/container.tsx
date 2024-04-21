@@ -1,23 +1,40 @@
 import { cn } from "@helpers/cn";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
-import { CommonTypes } from "../types";
+import { Tag } from "./types";
+import { CommonTypes } from "@ui/types";
 
 type Props = HTMLAttributes<HTMLDivElement> &
   CommonTypes &
-  VariantProps<typeof containerProps>;
+  VariantProps<typeof containerVariants> & {
+    as?: Tag;
+  };
 
 export function Container(props: Props) {
-  const { inlinePadding, children, className } = props;
+  const {
+    as: Tag = "div",
+    inlinePadding,
+    height,
+    width,
+    children,
+    className,
+  } = props;
 
   return (
-    <div className={cn(containerProps({ inlinePadding, className }))}>
+    <Tag
+      className={cn(
+        containerVariants({ inlinePadding }),
+        height,
+        width,
+        className,
+      )}
+    >
       {children}
-    </div>
+    </Tag>
   );
 }
 
-const containerProps = cva("container mx-auto", {
+const containerVariants = cva("container mx-auto", {
   variants: {
     inlinePadding: {
       "1": "px-1",
