@@ -3,7 +3,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@helpers/cn";
 import { createVectorValues } from "./create-vector-values";
 import { CommonTypes } from "@ui/types";
-import { commonProperties } from "@ui/common-properties";
+import { alignTokens, gapTokens, justifyTokens } from "../tokens";
 
 type Props = HTMLAttributes<HTMLDivElement> &
   CommonTypes &
@@ -61,7 +61,9 @@ const gridVariants = cva(null, {
       "row-dense": "grid-flow-row-dense",
       "column-dense": "grid-flow-col-dense",
     },
-    ...commonProperties,
+    justify: justifyTokens,
+    align: alignTokens,
+    gap: gapTokens,
   },
   defaultVariants: {
     display: "grid",

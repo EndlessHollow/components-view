@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 import { cn } from "@helpers/cn";
 import { CommonTypes } from "@ui/types";
-import { commonProperties } from "@ui/common-properties";
+import { alignTokens, gapTokens, justifyTokens } from "../tokens";
 
 type Props = HTMLAttributes<HTMLDivElement> &
   CommonTypes &
@@ -60,7 +60,9 @@ const flexVariants = cva(null, {
       wrap: "flex-wrap",
       "wrap-reverse": "flex-wrap-reverse",
     },
-    ...commonProperties,
+    justify: justifyTokens,
+    align: alignTokens,
+    gap: gapTokens,
   },
   defaultVariants: {
     display: "flex",
