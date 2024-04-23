@@ -1,5 +1,4 @@
 import { cn } from "@helpers/cn";
-import { CommonTypes } from "@ui/types";
 import { HTMLAttributes } from "react";
 
 type Props = HTMLAttributes<HTMLDivElement>;
