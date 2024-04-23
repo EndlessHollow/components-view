@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Homepage } from "./homepage";
 import { ErrorPage } from "./error-page";
 import { ApplicationDetail } from "./application-detail";
+import { Dashboard } from "./dashboard";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
   },
   {
