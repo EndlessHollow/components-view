@@ -5,16 +5,28 @@ import { Heading } from "@ui/typography/heading";
 import { Image } from "@ui/components/image";
 import { Text } from "@ui/typography/text";
 import { Badge } from "@ui/components/badge";
+import { useEffect, useRef } from "react";
+import { TDimensions } from "@hooks/use-window-resize";
 
 type Props = {
   application: TApplication;
+  windowSize: TDimensions;
+  index: number;
+  setSize: (index: number, size: number) => void;
 };
 
 export function Item(props: Props) {
-  const { application } = props;
+  const { application, windowSize, index, setSize } = props;
+
+  const itemRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const size = itemRef.current?.getBoundingClientRect().height || 0;
+    setSize(index, size);
+  }, [setSize, index, windowSize]);
 
   return (
-    <li className="py-3">
+    <li className="py-3" ref={itemRef}>
       <Flex align={"start"} gap={"3"}>
         <Image
           src={application.icon["64"] || application.icon["128"]}
