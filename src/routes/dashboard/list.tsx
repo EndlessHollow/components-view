@@ -13,6 +13,8 @@ import {
 import AutoSizer from "react-virtualized-auto-sizer";
 import { useCallback, useRef } from "react";
 import { useWindowResize } from "@hooks/use-window-resize";
+import { ItemSkeleton } from "./item-skeleton";
+import { ListSkeleton } from "./list-skeleton";
 
 type TSizeMap = { [index: number]: number };
 
@@ -33,6 +35,10 @@ function _List() {
 
   function getSize(index: number) {
     return sizeMap.current[index] || INITIAL_SIZE;
+  }
+
+  if (store.loading) {
+    return <ListSkeleton count={7} />;
   }
 
   if (!store.filteredApplications) {
@@ -60,13 +66,21 @@ function _List() {
           <VirtualizedList
             ref={listRef}
             innerElementType="ul"
-            itemData={store.applications}
-            itemCount={store.applications.length}
+            itemData={store.filteredApplications}
+            itemCount={store.filteredApplications.length}
             itemSize={getSize}
             height={height}
             width={width}
+            useIsScrolling={true}
           >
             {(props: ListChildComponentProps) => {
+              if (props.isScrolling) {
+                return (
+                  <div style={props.style}>
+                    <ItemSkeleton />
+                  </div>
+                );
+              }
               return (
                 <div style={props.style}>
                   <Item

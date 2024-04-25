@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useRootStore } from "@hooks/use-root-store";
 import { Navigation } from "@ui/components/navigation";
@@ -35,7 +35,7 @@ function _Dashboard() {
       >
         <Grid gap={"6"} height="h-full" className="grid-rows-[min-content,1fr]">
           <Heading type={"h1"}>Dashboard</Heading>
-          <Card>
+          <Card className="overflow-hidden">
             <Grid
               gap={"4"}
               className="grid-rows-[min-content,1fr]"
