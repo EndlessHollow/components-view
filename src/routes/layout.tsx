@@ -10,7 +10,7 @@ export function Layout() {
         <Container>
           <Navigation.List>
             <Navigation.Item>
-              <Link to="/">
+              <Link to="/" className="inline-block">
                 <Logo />
               </Link>
             </Navigation.Item>

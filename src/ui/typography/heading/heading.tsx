@@ -32,7 +32,7 @@ export function Heading(props: Props) {
   );
 }
 
-const headingVariants = cva("text-black", {
+const headingVariants = cva("text-gray-800", {
   variants: {
     type: {
       h1: "text-4xl font-bold",

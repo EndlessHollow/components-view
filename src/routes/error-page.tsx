@@ -1,12 +1,11 @@
+import { Button } from "@ui/components/button";
 import { Container } from "@ui/layout/container";
 import { Flex } from "@ui/layout/flex";
 import { Heading } from "@ui/typography/heading";
-import { isRouteErrorResponse, useRouteError } from "react-router-dom";
+import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export function ErrorPage() {
   const error = useRouteError();
-
-  console.log(error);
 
   function renderError() {
     if (isRouteErrorResponse(error)) {
@@ -32,8 +31,17 @@ export function ErrorPage() {
 
   return (
     <Container as={"main"} height="h-[calc(100vh-96px)]" className="mt-16 py-8">
-      <Flex direction={"column"} justify={"center"} align={"center"}>
+      <Flex
+        height="h-full"
+        direction={"column"}
+        justify={"center"}
+        align={"center"}
+        gap={"4"}
+      >
         {renderError()}
+        <Button>
+          <Link to="/">Back to homepage</Link>
+        </Button>
       </Flex>
     </Container>
   );
