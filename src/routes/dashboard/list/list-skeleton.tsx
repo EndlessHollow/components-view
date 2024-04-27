@@ -11,8 +11,8 @@ export function ListSkeleton(props: Props) {
 
   return (
     <ul>
-      {items.map(() => {
-        return <ItemSkeleton />;
+      {items.map((_, index) => {
+        return <ItemSkeleton key={index} />;
       })}
     </ul>
   );
