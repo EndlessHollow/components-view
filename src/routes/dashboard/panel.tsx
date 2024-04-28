@@ -4,12 +4,21 @@ import { Search } from "lucide-react";
 import { Heading } from "@ui/typography/heading";
 import { observer } from "mobx-react-lite";
 import { useRootStore } from "@hooks/use-root-store";
+import { useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 function _Panel() {
   const store = useRootStore();
 
-  function handleOnChange(query: string) {
+  const [value, setValue] = useState(store.searchQuery);
+
+  const handleSearch = useDebouncedCallback((query: string) => {
     store.search(query);
+  }, 500);
+
+  function handleOnChange(query: string) {
+    setValue(query);
+    handleSearch(query);
   }
 
   return (
@@ -18,7 +27,7 @@ function _Panel() {
       <TextField.Root
         label="search"
         placeholder="search"
-        value={store.searchQuery}
+        value={value}
         onChange={handleOnChange}
       >
         <TextField.Slot>

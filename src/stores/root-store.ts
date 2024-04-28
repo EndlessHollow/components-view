@@ -21,12 +21,22 @@ export class RootStore {
   }
 
   get filteredApplications() {
-    return this.applications.filter(
-      (app) =>
-        app.id.toLowerCase().includes(this.searchQuery) ||
-        app.name.toLowerCase().includes(this.searchQuery) ||
-        app.shortDescription.toLowerCase().includes(this.searchQuery),
-    );
+    if (!this.searchQuery) {
+      return this.applications;
+    }
+
+    const result = this.applications.filter((app) => {
+      const idMatch = app.id && app.id.toLowerCase().includes(this.searchQuery);
+      const nameMatch =
+        app.name && app.name.toLowerCase().includes(this.searchQuery);
+      const descriptionMatch =
+        app.shortDescription &&
+        app.shortDescription.toLowerCase().includes(this.searchQuery);
+
+      return idMatch || nameMatch || descriptionMatch;
+    });
+
+    return result;
   }
 
   search(query: string) {
@@ -38,7 +48,7 @@ export class RootStore {
     this.error = null;
 
     try {
-      const res = await fetch("https://apps-api.keboola.com/apps?limit=20");
+      const res = await fetch("https://apps-api.keboola.com/apps");
       if (res.status !== 200) {
         const error = new Error("Could not fetch applications.");
         this.error = error.message;
