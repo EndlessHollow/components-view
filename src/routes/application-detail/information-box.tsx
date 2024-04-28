@@ -25,8 +25,10 @@ export function InformationBox(props: Props) {
 
       return (
         <Flex direction={"column"} justify={"center"} align={"center"}>
-          {text.map((item) => (
-            <Text className="text-2xl">{item}</Text>
+          {text.map((item, idx) => (
+            <Text key={`${item}-${idx}`} className="text-2xl">
+              {item}
+            </Text>
           ))}
         </Flex>
       );

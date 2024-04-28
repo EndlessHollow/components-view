@@ -28,8 +28,10 @@ export function Item(props: Props) {
 
     return (
       <Flex gap={"1"}>
-        {application.category.map((category) => (
-          <Badge radius={"rounded"}>{category}</Badge>
+        {application.category.map((category, idx) => (
+          <Badge key={`${category}-${idx}`} radius={"rounded"}>
+            {category}
+          </Badge>
         ))}
       </Flex>
     );

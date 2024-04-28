@@ -1,7 +1,6 @@
 import { HTMLAttributes } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@helpers/cn";
-import { createVectorValues } from "./create-vector-values";
 import { CommonTypes } from "@ui/types";
 import { alignTokens, gapTokens, justifyTokens } from "../tokens";
 
