@@ -10,11 +10,13 @@ export function ErrorPage() {
   function renderError() {
     if (isRouteErrorResponse(error)) {
       if (error.status === 404) {
-        return <Heading type={"h2"}>This page doesn't exist!</Heading>;
+        return <Heading type={"h2"}>This page do not exist!</Heading>;
       }
 
       if (error.status === 401) {
-        return <Heading type={"h2"}>You aren't authorized to see this</Heading>;
+        return (
+          <Heading type={"h2"}>You are not authorized to see this</Heading>
+        );
       }
 
       if (error.status === 503) {

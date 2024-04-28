@@ -17,11 +17,7 @@ export function Layout() {
           </Navigation.List>
         </Container>
       </Navigation.Root>
-      <Container
-        as={"main"}
-        height="h-[calc(100vh-96px)]"
-        className="mt-16 py-8"
-      >
+      <Container as={"main"} height="h-full" className="mt-16 py-8">
         <Outlet />
       </Container>
     </>

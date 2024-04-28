@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "./error-page";
 import { Dashboard } from "./dashboard";
-import { ApplicationDetailLoader } from "@routes/application-detail";
+import { applicationDetailLoader } from "@routes/application-detail";
 import { Layout } from "./layout";
 
 export const router = createBrowserRouter([
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/application-detail/:id",
-        loader: ApplicationDetailLoader,
+        loader: applicationDetailLoader,
         lazy: async () => {
           const { ApplicationDetail } = await import(
             "@routes/application-detail"

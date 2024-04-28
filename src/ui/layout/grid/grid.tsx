@@ -53,7 +53,7 @@ const gridVariants = cva(null, {
       "inline-grid": "inline-grid",
     },
     rows: createVectorValues("rows"),
-    columns: createVectorValues("columns"),
+    columns: createVectorValues("cols"),
     flow: {
       row: "grid-flow-row",
       column: "grid-flow-col",

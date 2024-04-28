@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 
 type Props = {
   label: string;
+  value: string;
   placeholder: string;
   onChange: (value: string) => void;
   children: ReactNode;
@@ -11,12 +12,13 @@ type Props = {
 };
 
 export function TextField(props: Props) {
-  const { label, placeholder, onChange, children, className } = props;
+  const { label, value, placeholder, onChange, children, className } = props;
 
   return (
     <div className="relative flex items-center">
       {children}
       <input
+        value={value}
         aria-label={label}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}

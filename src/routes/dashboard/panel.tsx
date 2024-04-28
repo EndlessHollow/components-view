@@ -18,6 +18,7 @@ function _Panel() {
       <TextField.Root
         label="search"
         placeholder="search"
+        value={store.searchQuery}
         onChange={handleOnChange}
       >
         <TextField.Slot>
