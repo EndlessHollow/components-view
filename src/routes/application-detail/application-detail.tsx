@@ -17,8 +17,6 @@ const ICON_COLOR = "text-gray-800";
 export function ApplicationDetail() {
   const appDetail = useLoaderData() as TApplicationDetail;
 
-  console.log(appDetail);
-
   return (
     <Grid gap={"6"}>
       <Grid gap={"4"}>
@@ -26,19 +24,16 @@ export function ApplicationDetail() {
         <Heading>Application Detail</Heading>
       </Grid>
       <Card>
-        <Grid>
-          <Flex gap={"4"}>
-            <Image
-              src={appDetail.icon["128"] || appDetail.icon["64"]}
-              alt="`image - ${appDetail.name}`"
-            />
-            <Grid>
-              <Heading type="h2">{appDetail.name}</Heading>
-              <Text>{appDetail.shortDescription}</Text>
-            </Grid>
-          </Flex>
-          <Markdown>{appDetail.longDescription}</Markdown>
-        </Grid>
+        <Flex gap={"4"}>
+          <Image
+            src={appDetail.icon["128"] || appDetail.icon["64"]}
+            alt="`image - ${appDetail.name}`"
+          />
+          <Grid>
+            <Heading type="h2">{appDetail.name}</Heading>
+            <Text>{appDetail.shortDescription}</Text>
+          </Grid>
+        </Flex>
       </Card>
       <Grid columns={"12"} gap={"4"}>
         <InformationBox
@@ -57,6 +52,16 @@ export function ApplicationDetail() {
           text={appDetail.version}
         />
       </Grid>
+      <Card>
+        <Grid gap={"6"}>
+          <Heading as="h2" type={"h2"}>
+            Description
+          </Heading>
+          <Markdown className="prose prose-headings:text-gray-800 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:text-slate-600">
+            {appDetail.longDescription}
+          </Markdown>
+        </Grid>
+      </Card>
     </Grid>
   );
 }
