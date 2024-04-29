@@ -21,6 +21,22 @@ export function Item(props: Props) {
 
   const itemRef = useRef<HTMLLIElement>(null);
 
+  function renderCategory() {
+    if (!application.category) {
+      return null;
+    }
+
+    return (
+      <Flex gap={"1"}>
+        {application.category.map((category, idx) => (
+          <Badge key={`${category}-${idx}`} radius={"rounded"}>
+            {category}
+          </Badge>
+        ))}
+      </Flex>
+    );
+  }
+
   useEffect(() => {
     const size = itemRef.current?.getBoundingClientRect().height || 0;
     setSize(index, size);
@@ -41,7 +57,7 @@ export function Item(props: Props) {
             <Heading as="h4" type={"h4"}>
               {application.name}
             </Heading>
-            <Badge radius={"rounded"}>{application.type}</Badge>
+            {renderCategory()}
           </Flex>
           <Text color="secondary">{application.shortDescription}</Text>
         </Grid>

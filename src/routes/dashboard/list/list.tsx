@@ -24,7 +24,7 @@ function _List() {
   const store = useRootStore();
 
   const listRef = useRef<VariableSizeList>(null);
-  let sizeMap = useRef<TSizeMap>({});
+  const sizeMap = useRef<TSizeMap>({});
 
   const dimensions = useWindowResize();
 

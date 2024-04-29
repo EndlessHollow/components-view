@@ -1,4 +1,4 @@
 export type CommonTypes = {
-    width?: string;
-    height?: string;
+  width?: string;
+  height?: string;
 };

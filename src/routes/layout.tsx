@@ -1,9 +1,12 @@
 import { Logo } from "@assets/logo";
 import { Navigation } from "@ui/components/navigation";
+import { Spinner } from "@ui/components/spinner";
 import { Container } from "@ui/layout/container";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigation } from "react-router-dom";
 
 export function Layout() {
+  const navigation = useNavigation();
+
   return (
     <>
       <Navigation.Root>
@@ -17,12 +20,8 @@ export function Layout() {
           </Navigation.List>
         </Container>
       </Navigation.Root>
-      <Container
-        as={"main"}
-        height="h-[calc(100vh-96px)]"
-        className="mt-16 py-8"
-      >
-        <Outlet />
+      <Container as={"main"} height="h-full" className="mt-16 py-8">
+        {navigation.state === "loading" ? <Spinner /> : <Outlet />}
       </Container>
     </>
   );
